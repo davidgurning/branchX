@@ -24,9 +24,9 @@ const ProgressBar = ({ value, max, colorClass, label }) => {
 };
 
 // ── Kartu profil sales ──
-const SalesCard = ({ sales, rank, targetLvm, targetEdc }) => {
-  const perLvm = Math.round(targetLvm / 5);
-  const perEdc = Math.round(targetEdc / 5);
+const SalesCard = ({ sales, rank, targetLvm, targetEdc, totalEmployees }) => {
+  const perLvm = targetLvm / totalEmployees;
+  const perEdc = targetEdc / totalEmployees;
   const lvmPct = Math.min(Math.round((sales.lvm / perLvm) * 100), 100);
   const edcPct = Math.min(Math.round((sales.edc / perEdc) * 100), 100);
   const avgPct = Math.round((lvmPct + edcPct) / 2);
@@ -196,6 +196,7 @@ const SalesPerformancePage = () => {
               rank={originalRank}
               targetLvm={MONTHLY_TARGET.lvm}
               targetEdc={MONTHLY_TARGET.edc}
+              totalEmployees={sorted.length}
             />
           );
         })}

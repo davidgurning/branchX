@@ -52,18 +52,30 @@ const navItems = [
   },
 ];
 
-const Sidebar = ({ activeNav, onNavChange, onLogout }) => {
+const Sidebar = ({ activeNav, onNavChange, onLogout, mobileMenuOpen, setMobileMenuOpen }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <aside
-      className={`
-        flex flex-col bg-slate-900 border-r border-slate-700/50
-        transition-all duration-300 ease-in-out
-        ${collapsed ? "w-16" : "w-60"}
-        min-h-screen relative z-20
-      `}
-    >
+    <>
+      {/* Overlay untuk mobile */}
+      {mobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+      
+      <aside
+        className={`
+          flex flex-col bg-slate-900 border-r border-slate-700/50
+          transition-all duration-300 ease-in-out
+          ${collapsed ? "md:w-16" : "md:w-60"}
+          fixed md:relative inset-y-0 left-0 z-50
+          w-64 md:w-auto
+          ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+          min-h-screen
+        `}
+      >
       {/* ── Logo & Header ── */}
       <div className="flex items-center gap-3 px-4 py-5 border-b border-slate-700/50">
         {/* Logo Mandiri (simulasi warna khas) */}
@@ -140,6 +152,7 @@ const Sidebar = ({ activeNav, onNavChange, onLogout }) => {
         </button>
       </div>
     </aside>
+    </>
   );
 };
 

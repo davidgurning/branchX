@@ -135,7 +135,7 @@ const SalesTable = ({ salesData }) => {
                   <td className="px-4 py-4">
                     <MiniProgressBar
                       value={sales.lvm}
-                      max={MONTHLY_TARGET.lvm / 5} // Target per sales
+                      max={MONTHLY_TARGET.lvm / salesData.length} // Target per karyawan
                       colorClass="bg-gradient-to-r from-blue-500 to-cyan-400"
                     />
                   </td>
@@ -144,7 +144,7 @@ const SalesTable = ({ salesData }) => {
                   <td className="px-4 py-4">
                     <MiniProgressBar
                       value={sales.edc}
-                      max={MONTHLY_TARGET.edc / 5} // Target per sales
+                      max={MONTHLY_TARGET.edc / salesData.length} // Target per karyawan
                       colorClass="bg-gradient-to-r from-purple-500 to-pink-400"
                     />
                   </td>
@@ -156,12 +156,12 @@ const SalesTable = ({ salesData }) => {
       </div>
 
       {/* ── Footer ── */}
-      <div className="px-6 py-3 border-t border-slate-700/40 flex items-center justify-between">
+      <div className="px-6 py-3 border-t border-slate-700/40 flex items-center justify-between flex-wrap gap-2">
         <p className="text-slate-500 text-xs">
-          Menampilkan {salesData.length} sales aktif
+          Menampilkan {salesData.length} karyawan aktif
         </p>
         <p className="text-slate-500 text-xs">
-          Target/orang: LVM <strong className="text-slate-300">{MONTHLY_TARGET.lvm / 5}</strong> | EDC <strong className="text-slate-300">{MONTHLY_TARGET.edc / 5}</strong>
+          Target/orang: LVM <strong className="text-slate-300">{MONTHLY_TARGET.lvm / salesData.length}</strong> | EDC <strong className="text-slate-300">{(MONTHLY_TARGET.edc / salesData.length).toFixed(1)}</strong>
         </p>
       </div>
     </div>

@@ -26,6 +26,9 @@ function App() {
   // State navigasi sidebar yang aktif
   const [activeNav, setActiveNav] = useState("dashboard");
 
+  // State menu mobile
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   // State animasi masuk halaman
   const [mounted, setMounted] = useState(false);
 
@@ -82,19 +85,24 @@ function App() {
       {/* ══ SIDEBAR ══ */}
       <Sidebar 
         activeNav={activeNav} 
-        onNavChange={handleNavChange} 
+        onNavChange={(id) => {
+          handleNavChange(id);
+          setMobileMenuOpen(false);
+        }} 
         onLogout={() => setIsLoggedIn(false)}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
       />
 
       {/* ══ KONTEN UTAMA ══ */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden w-full">
         {/* Header sticky */}
-        <Header branchInfo={BRANCH_INFO} />
+        <Header branchInfo={BRANCH_INFO} setMobileMenuOpen={setMobileMenuOpen} />
 
         {/* ── Area scroll konten ── */}
         <main
           className={`
-            flex-1 overflow-y-auto p-6
+            flex-1 overflow-y-auto p-4 md:p-6
             transition-all duration-300
             ${mounted ? "opacity-100" : "opacity-0"}
             ${pageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}

@@ -11,8 +11,8 @@ export const BRANCH_INFO = {
 
 // Target bulan ini
 export const MONTHLY_TARGET = {
-  lvm: 500,
-  edc: 250,
+  lvm: 100,
+  edc: 30,
 };
 
 // Data 20 Karyawan dengan info tambahan
@@ -41,12 +41,12 @@ export const SALES_DATA = [
 
 // Data historis bulanan (6 bulan terakhir) untuk laporan
 export const MONTHLY_HISTORY = [
-  { month: "Nov 2025", lvm: 380, edc: 180, targetLvm: 500, targetEdc: 250 },
-  { month: "Des 2025", lvm: 420, edc: 210, targetLvm: 500, targetEdc: 250 },
-  { month: "Jan 2026", lvm: 450, edc: 230, targetLvm: 500, targetEdc: 250 },
-  { month: "Feb 2026", lvm: 410, edc: 195, targetLvm: 500, targetEdc: 250 },
-  { month: "Mar 2026", lvm: 480, edc: 240, targetLvm: 500, targetEdc: 250 },
-  { month: "Apr 2026", lvm: 645, edc: 322, targetLvm: 500, targetEdc: 250, isCurrent: true },
+  { month: "Nov 2025", lvm: 80, edc: 24, targetLvm: 100, targetEdc: 30 },
+  { month: "Des 2025", lvm: 85, edc: 26, targetLvm: 100, targetEdc: 30 },
+  { month: "Jan 2026", lvm: 95, edc: 28, targetLvm: 100, targetEdc: 30 },
+  { month: "Feb 2026", lvm: 88, edc: 25, targetLvm: 100, targetEdc: 30 },
+  { month: "Mar 2026", lvm: 105, edc: 32, targetLvm: 100, targetEdc: 30 },
+  { month: "Apr 2026", lvm: 90, edc: 20, targetLvm: 100, targetEdc: 30, isCurrent: true },
 ];
 
 // Data aktivitas terbaru (upload log)

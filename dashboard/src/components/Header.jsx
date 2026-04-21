@@ -3,7 +3,7 @@
 // ============================================================
 import { useState, useEffect } from "react";
 
-const Header = ({ branchInfo }) => {
+const Header = ({ branchInfo, setMobileMenuOpen }) => {
   // State untuk jam real-time
   const [now, setNow] = useState(new Date());
 
@@ -31,14 +31,24 @@ const Header = ({ branchInfo }) => {
   return (
     <header className="bg-slate-900/80 backdrop-blur-sm border-b border-slate-700/50 px-6 py-4 sticky top-0 z-10">
       <div className="flex items-center justify-between gap-4">
-        {/* ── Judul Halaman ── */}
-        <div>
-          <h1 className="text-white font-bold text-lg leading-tight">
-            Dashboard Monitoring Sales
-          </h1>
-          <p className="text-slate-400 text-sm">
-            {branchInfo.branch} — {branchInfo.month}
-          </p>
+        {/* ── Hamburger & Judul Halaman ── */}
+        <div className="flex items-center gap-3">
+          <button 
+            className="md:hidden p-2 -ml-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div>
+            <h1 className="text-white font-bold text-lg leading-tight truncate max-w-[200px] sm:max-w-none">
+              Dashboard Monitoring Sales
+            </h1>
+            <p className="text-slate-400 text-sm">
+              {branchInfo.branch} — {branchInfo.month}
+            </p>
+          </div>
         </div>
 
         {/* ── Info kanan: waktu & BM ── */}
@@ -56,7 +66,7 @@ const Header = ({ branchInfo }) => {
 
           {/* Profil BM */}
           <div className="flex items-center gap-2.5">
-            <div className="flex flex-col items-end">
+            <div className="hidden sm:flex flex-col items-end">
               <span className="text-white text-sm font-semibold leading-tight">
                 {branchInfo.bmName}
               </span>
